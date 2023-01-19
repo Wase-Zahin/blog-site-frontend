@@ -1,12 +1,17 @@
 <template>
-    <form @submit="onSubmit">
-        <input placeholder="username" name="username" id="username" />
-        <input type="password" id="password" placeholder="Password" name="password" />
+    <form class="newBlog" @submit="onSubmit">
+        <input 
+        v-model="title"
+        type="text"
+        placeholder="Title" 
+        name="title" 
+        id="title" />
+        <textarea v-model="description" type="text" id="description" placeholder=" Write something..." name="description" rows="6"></textarea>
+        <button type="submit" @click="onSubmit">Submit</button>
     </form>
 </template>
 
 <script>
-import { ref } from 'vue';
 import axios from 'axios';
 
 export default {
@@ -14,23 +19,32 @@ export default {
     data() {
         return {
             msg: 'Hello!',
-            username: ref(),
-            password: ref(),
+            title: '',
+            description: '',
         };
     },
     methods: {
-        onSubmit(values) {
+        onSubmit(e) {
+            e.preventDefault();
             let params = {
-                username: values.username,
-                password: values.password
+                title: this.title,
+                description: this.description
             }
-            axios.post('http://127.0.0.1:5000/login', params)
-            .then(function (res) {
-                console.log(res);
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
+            console.log(params)
+            axios.post('http://127.0.0.1:8000/home', params)
+                .then(function (res) {
+                    console.log(res.data);
+                    
+                    // if (res) {
+                    //     return
+                    // }
+                    // else {
+                    //     return
+                    // }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         },
     }
 };

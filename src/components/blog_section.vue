@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>All Blogs</h1>
+        <h1><span>All Blogs</span></h1>
         <nav>
             <ul>
                 <li>

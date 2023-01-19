@@ -2,12 +2,13 @@
   <RouterView />
   <div>
     <!-- <router-link to="/blog_section">Blog</router-link> -->
-    <header_bar></header_bar>
+    <!-- <header_bar></header_bar> -->
   </div>
 </template>
 
 <script>
-import header_bar from "./components/header_bar.vue"
+// import header_bar from "./components/header_bar.vue"
+// import login_page from "./components/login_page.vue";
 
 export default {
   name: 'App',
@@ -17,8 +18,9 @@ export default {
     };
   },
   components: {
-    header_bar,
-  },
+   // header_bar,
+    // login_page
+},
   methods: {
 
   },

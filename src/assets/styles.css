@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+.headerofpage {
+    min-height: 100vh;
+}
+
 header {
     max-width: 960px;
     margin: auto;
@@ -57,7 +61,7 @@ main>nav>ul>li>p {
     font-size: 1.2rem;
 }
 
-form {
+.newBlog {
     padding: 20px 40px;
     display: grid;
     gap: 1rem;
@@ -66,15 +70,17 @@ form {
     margin-top: 2rem;
 }
 
-form>input {
+.newBlog>input {
     padding: 0.4rem;
 }
 
-form>input:focus, form>textarea:focus {
+.newBlog>input:focus,
+.newBlog>textarea:focus {
     outline: 2px solid crimson;
     border: 0;
 }
-/* form>input {
+
+/* .newBlog>input {
     border: 0;
     outline: 0;
     font-size: 1.3rem;
@@ -82,10 +88,79 @@ form>input:focus, form>textarea:focus {
     border-bottom: 2px solid gray;
 } */
 
+.logins {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    background-color: #FFF6BD;
+    align-items: center;
+}
+
+.login-box>h1 {
+    align-self: center;
+    letter-spacing: 0.1rem;
+}
+
+.login-box {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: -4px -4px 5px rgb(160, 159, 159), 4px 4px 5px rgb(66, 66, 66);
+}
+
+.login-box input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(97, 96, 96);
+    margin: 0.4rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.login-box input:focus {
+    border-bottom: 2px solid crimson;
+}
+
+.login-box button {
+    margin-top: 10px;
+    background: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 3px 25px;
+    letter-spacing: 0.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2rem 0.4rem 0.7rem 0.4rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.login-box>button:hover {
+    filter: brightness(90%);
+    background-color: #ffffff;
+}
+
+.login-icon {
+    align-self: center;
+    margin-bottom: 0.4rem;
+    height: 65px;
+    width: 65px;
+}
+
 .navWrapper {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     color: #575353;
+}
+
+.navWrapper ul {
+    text-transform: capitalize;
 }
 
 .navWrapper>* {
@@ -94,25 +169,90 @@ form>input:focus, form>textarea:focus {
     font-weight: 200;
 }
 
+.headerofpage {
+    position: relative;
+}
+
 .headerTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
 }
 
-.van-button {
-    border-radius: 0.8rem;
-    padding: 0.5rem;
-    background-color: rgba(150, 150, 150, 0.178);
+.headerTop h1 {
+    font-size: 2em;
+    color: crimson;
 }
 
-.van-button:hover {
-    background-color: rgba(126, 126, 126, 0.178);
-    transform: scale(1.05, 1.05);
+/* logout button and popup style */
+.openPopUp {
+    background: transparent;
+    border: 2px solid rgb(2, 2, 2);
+    padding: 3px 10px;
+    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    border: 2px solid crimson;
+    transition: all 0.4s ease;
 }
+
+.openPopUp:hover {
+    box-shadow: inset 0 0 0 150px rgb(233, 72, 72);
+    border: 2px solid rgb(145, 145, 145);
+    color: rgb(255, 255, 255);
+}
+
+.popupsection {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+}
+
+.ShowPopUp {
+    transform: scale(1);
+}
+
+.insidepopup {
+    width: 100%;
+    max-width: 350px;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    text-align: center;
+}
+
+.button-design {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.button-design button {
+    background: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-design button:hover {
+    background: red;
+    filter: brightness(90%);
+    color: white;
+}
+
+/* end of popup section */
 
 .navWrapper>nav>ul {
     display: flex;
@@ -130,9 +270,48 @@ form>input:focus, form>textarea:focus {
     color: crimson;
 }
 
-/* nav {
-    display: flex;
-    margin: auto;
-    max-width: 960px;
-    background-color: red;
-} */
+/* responsive style below */
+@media screen and (max-width: 375px) {
+    .navWrapper {
+        display: block;
+    }
+
+    .navWrapper ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navWrapper>nav>ul {
+        gap: 10px;
+    }
+
+    .headerTop h1 {
+        font-size: 1.8em;
+    }
+
+    .headerTop button {
+        padding: 0 15px;
+        font-size: 1.2em;
+    }
+
+    main {
+        font-size: 0.8em;
+    }
+
+    main>nav>ul>li>h3 {
+        font-size: 1.8em;
+    }
+
+    main>h1>span {
+        border-bottom: 5px double black;
+        border-radius: 10px;
+    }
+
+    main>h1 {
+        padding-bottom: 0.8rem;
+    }
+
+    main {
+        padding: 3.5rem 0 0 0;
+    }
+}

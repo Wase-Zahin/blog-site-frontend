@@ -1,42 +1,57 @@
 <template>
-    <form @submit="onSubmit">
+   <div class="logins">
+    <form class="login-box" @submit="onSubmit">
+        <img class="login-icon" src="../components/img/6681204.png"/>
+        <h1>User Login</h1>
         <input 
-        placeholder="username" 
+        v-model="username"
+        placeholder="Username" 
         name="username" 
-        id="username" />
-        <input 
-        type="password" 
+        id="username" required/>
+
+        <input
+        v-model="password" 
         id="password" 
         placeholder="Password" 
-        name="password" />
-        <button type="submit">Submit</button>
+        name="password" required/>
+        <button type="submit">Login</button>
     </form>
+   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import router from '@/router';
 import axios from 'axios';
 
 export default {
-
-    name: 'new_blog',
+    name: 'login_page',
     data() {
         return {
             msg: 'Hello!',
-            username: ref(),
-            password: ref(),
+            username: '',
+            password: '',
         };
     },
     methods: {
-        onSubmit(e, values) {
+        onSubmit(e) {
             e.preventDefault();
             let params = {
-                username: values.username,
-                password: values.password
+                username: this.username,
+                password: this.password
             }
-            axios.post('http://127.0.0.1:8080/login', params)
+            axios.post('http://127.0.0.1:8000/login', params)
             .then(function (res) {
-                console.log(res);
+                console.log(res.data);
+                if (res.data.status == 'login_yes') {
+                    let userId = res.data.id;
+                    window.localStorage.setItem('login_status', res.data.status);
+                    window.localStorage.setItem('username', params.username);
+                    window.localStorage.setItem('userid', userId)
+                    console.log(window.localStorage)
+                    router.push({
+                        name: 'home_page'
+                    })
+                } else return
             })
             .catch(function (err) {
                 console.log(err);
