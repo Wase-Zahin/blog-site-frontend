@@ -3,17 +3,10 @@
         <h1><span>All Blogs</span></h1>
         <nav>
             <ul>
-                <li>
-                    <h3>Blog 1</h3>
-                    <p>This is blog 1</p>
-                </li>
-                <li>
-                    <h3>Blog 2</h3>
-                    <p>This is blog 2</p>
-                </li>
-                <li>
-                    <h3>Blog 3</h3>
-                    <p>This is blog 3</p>
+                <li v-for="blog in blogs_list" :key="blog.id">
+                    <router-link :to="{path:'/blog_description', query:{id:blog.id}}"><h3>{{ blog.title }}</h3></router-link>
+                    <p v-if="blog.description.length<50">{{ blog.description }} </p>
+                    <p v-else>{{ blog.description.substring(0,50)+"..." }}</p>
                 </li>
             </ul>
         </nav>
@@ -21,31 +14,38 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import router from '@/router';
+import axios from 'axios';
 
 export default {
-  name: 'blog_section',
-  data() {
-    return {
-      msg: 'Hello!',
-    };
-  },
-  // methods: {
-  //   getMessage() {
-  //     const path = 'http://localhost:5000/ping';
-  //     axios.get(path)
-  //       .then((res) => {
-  //         console.log(res);  
-  //         this.msg = res.data.msg;
-  //       })
-  //       .catch((error) => {
-  //         // eslint-disable-next-line
-  //         console.error(error);
-  //       });
-  //   },
-  // },
-  // created() {
-  //   this.getMessage();
-  // }
+    name: 'blog_section',
+    data() {
+        return {
+            blogs_list: [],
+        };
+    },
+    mounted() {
+        this.onMount();
+    },
+    methods: {
+        onMount() {
+            axios.post('http://127.0.0.1:8000/home')
+                .then((res) => {
+                    console.log(res.data)
+                    if (res) {
+                        this.blogs_list = res.data
+                    }
+                    else return
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        },
+        viewBlog() {
+            router.push({
+                //name: 
+            })
+        }
+    }
 };
 </script> 

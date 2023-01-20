@@ -30,7 +30,7 @@ main>h1 {
 
 main>nav>ul {
     display: grid;
-    gap: 1.4rem;
+    gap: 2.2rem;
 }
 
 main>nav>ul>li {
@@ -70,6 +70,11 @@ main>nav>ul>li>p {
     margin-top: 2rem;
 }
 
+.newBlog>button {
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
 .newBlog>input {
     padding: 0.4rem;
 }
@@ -79,14 +84,6 @@ main>nav>ul>li>p {
     outline: 2px solid crimson;
     border: 0;
 }
-
-/* .newBlog>input {
-    border: 0;
-    outline: 0;
-    font-size: 1.3rem;
-    background-color: transparent;
-    border-bottom: 2px solid gray;
-} */
 
 .logins {
     height: 100vh;
@@ -221,35 +218,39 @@ main>nav>ul>li>p {
 }
 
 .insidepopup {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     max-width: 350px;
+    width: 100%;
     background: rgb(255, 255, 255);
-    padding: 20px;
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 0.2rem;
     text-align: center;
+    border-radius: 0.4rem;
+}
+
+.insidepopup>p {
+    margin: 2rem 0;
 }
 
 .button-design {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    border: none;
 }
 
 .button-design button {
+    border: none;
+    padding: 0.4rem;
+    width: 100%;
     background: transparent;
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
     font-weight: bold;
-    padding: 3px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    letter-spacing: 0.1rem;
     transition: all 0.3s ease-in-out;
 }
 
 .button-design button:hover {
-    background: red;
+    background: white;
     filter: brightness(90%);
-    color: white;
 }
 
 /* end of popup section */
@@ -304,7 +305,6 @@ main>nav>ul>li>p {
 
     main>h1>span {
         border-bottom: 5px double black;
-        border-radius: 10px;
     }
 
     main>h1 {
@@ -312,6 +312,6 @@ main>nav>ul>li>p {
     }
 
     main {
-        padding: 3.5rem 0 0 0;
+        padding: 3.5rem 0 0 1.2rem;
     }
 }

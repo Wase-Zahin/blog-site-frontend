@@ -1,12 +1,20 @@
 <template>
     <form class="newBlog" @submit="onSubmit">
         <input 
+        v-model="username"
+        placeholder="Username" 
+        name="username" 
+        id="username"
+        required
+        />
+        <input 
         v-model="title"
-        type="text"
         placeholder="Title" 
         name="title" 
-        id="title" />
-        <textarea v-model="description" type="text" id="description" placeholder=" Write something..." name="description" rows="6"></textarea>
+        id="title"
+        required
+        />
+        <textarea v-model="description" id="description" placeholder=" Write something..." name="description" rows="6" required></textarea>
         <button type="submit" @click="onSubmit">Submit</button>
     </form>
 </template>
@@ -18,29 +26,27 @@ export default {
     name: 'new_blog',
     data() {
         return {
-            msg: 'Hello!',
+            username: '',
             title: '',
             description: '',
         };
     },
     methods: {
-        onSubmit(e) {
-            e.preventDefault();
+        onSubmit() {
             let params = {
+                username: this.username,
                 title: this.title,
                 description: this.description
             }
-            console.log(params)
-            axios.post('http://127.0.0.1:8000/home', params)
+            axios.post('http://127.0.0.1:8000/create', params)
                 .then(function (res) {
+                    console.log(params)
                     console.log(res.data);
-                    
-                    // if (res) {
+                    if (res.data == "Submitted successfully") {
+                        console.log('NICE')
                     //     return
                     // }
-                    // else {
-                    //     return
-                    // }
+                    }
                 })
                 .catch(function (err) {
                     console.log(err);

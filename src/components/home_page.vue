@@ -17,16 +17,18 @@
                 </nav>
             </div>
             <hr />
+        </header>
             <KeepAlive>
                 <component :is="currentTab" class="tab"></component>
             </KeepAlive>
-        </header>
+        
         <!-- popup style design -->
         <section v-if="showPopup" class="popupsection ShowPopUp">
             <div class="insidepopup">
-                <p>Are you really want to logout?</p>
+                <p>Are you sure<br/> you want to logout?</p><hr/>
                 <div class="button-design">
                     <button @click="logout">Confirm</button>
+                    <hr/>
                     <button @click="showPopup = false" >Cancel</button>
                 </div>
             </div>
@@ -35,7 +37,6 @@
 </template>
 
 <script>
-import { Button, showToast } from 'vant';
 import login_page from "./login_page.vue"
 import new_blog from "./new_blog.vue";
 import blog_section from "./blog_section.vue";
@@ -47,11 +48,10 @@ export default {
         login_page,
         new_blog,
         blog_section,
-        [Button.name]: Button,
-        [showToast.name]: showToast,
     },
     data() {
         return {
+            blogs_list: [],
             currentTab: 'blog_section',
             tabs: ['blog_section', 'new_blog'],
             showPopup: false,
@@ -62,9 +62,6 @@ export default {
             router.push({
                 name: 'login_page'
             })
-        },
-        logoutPopup() {
-            showToast('Logout');
         },
     }
 }
