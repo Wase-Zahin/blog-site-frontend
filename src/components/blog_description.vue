@@ -1,6 +1,8 @@
 <template>
-    <main>
+    <header_section></header_section>
+    <main class="blog_details">
         <h1><span>{{ title }} </span></h1>
+        <h6>Written by {{ username }}</h6>
         <p>{{ description }}</p>
     </main>
 </template>
@@ -9,11 +11,16 @@
 import axios from 'axios';
 import router from '@/router';
 import { useRoute, useRouter } from 'vue-router';
+import header_section from './header_section.vue';
 
 // import { useRoute, useRouter } from 'vue-router';
 export default {
+    components: {
+        header_section,
+    },
     data() {
         return {
+            username: '',
             title: '',
             description: '',
             route: useRoute(),
@@ -31,9 +38,10 @@ export default {
             }
             axios.post('http://127.0.0.1:8000/description', params)
             .then((res) => {
-                console.log(res.data);
+                console.log(res.data)
                 this.description = res.data.description
                 this.title = res.data.title
+                this.username = res.data.username
             })
             .catch(function(err) {
                 console.log(err);

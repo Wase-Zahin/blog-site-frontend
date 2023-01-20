@@ -41,16 +41,16 @@ export default {
             }
             axios.post('http://127.0.0.1:8000/login', params)
             .then(function (res) {
-                console.log(res.data);
                 if (res.data.status == 'login_yes') {
                     let userId = res.data.id;
                     window.localStorage.setItem('login_status', res.data.status);
                     window.localStorage.setItem('username', params.username);
                     window.localStorage.setItem('userid', userId)
-                    console.log(window.localStorage)
-                    router.push({
-                        name: 'home_page'
-                    })
+                    setTimeout(() => {
+                            router.push({
+                            name: 'home_page'
+                        })    
+                    }, 1500);
                 } else return
             })
             .catch(function (err) {

@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import router from '@/router';
 import axios from 'axios';
 
 export default {
@@ -31,7 +30,6 @@ export default {
         onMount() {
             axios.post('http://127.0.0.1:8000/home')
                 .then((res) => {
-                    console.log(res.data)
                     if (res) {
                         this.blogs_list = res.data
                     }
@@ -41,11 +39,7 @@ export default {
                     console.log(err);
                 });
         },
-        viewBlog() {
-            router.push({
-                //name: 
-            })
-        }
+        
     }
 };
 </script> 

@@ -44,8 +44,6 @@ export default {
                     console.log(res.data);
                     if (res.data == "Submitted successfully") {
                         console.log('NICE')
-                    //     return
-                    // }
                     }
                 })
                 .catch(function (err) {

@@ -3,7 +3,6 @@
         <header>
             <div class="headerTop">
                 <h1>BLOG SITE</h1>
-                <!-- <van-button @click-overlay="logoutPopup" @click="logout" type="primary">Logout</van-button> -->
                 <button @click="showPopup = !showPopup" class="openPopUp">Logout</button>
             </div>
             <div class="navWrapper">
@@ -18,18 +17,18 @@
             </div>
             <hr />
         </header>
-            <KeepAlive>
-                <component :is="currentTab" class="tab"></component>
-            </KeepAlive>
-        
+        <KeepAlive>
+            <component :is="currentTab" class="tab"></component>
+        </KeepAlive>
         <!-- popup style design -->
         <section v-if="showPopup" class="popupsection ShowPopUp">
             <div class="insidepopup">
-                <p>Are you sure<br/> you want to logout?</p><hr/>
+                <p>Are you sure<br /> you want to logout?</p>
+                <hr />
                 <div class="button-design">
                     <button @click="logout">Confirm</button>
-                    <hr/>
-                    <button @click="showPopup = false" >Cancel</button>
+                    <hr />
+                    <button @click="showPopup = false">Cancel</button>
                 </div>
             </div>
         </section>
@@ -59,9 +58,11 @@ export default {
     },
     methods: {
         logout() {
-            router.push({
-                name: 'login_page'
-            })
+            setTimeout(() => {
+                router.push({
+                    name: 'login_page'
+                })
+            }, 1000);
         },
     }
 }

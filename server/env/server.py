@@ -21,7 +21,7 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        sql = "select id, title, description from blogs"
+        sql = "select id, title, username, description from blogs"
         cursor.execute(sql)
         res = cursor.fetchall()
         if res:
@@ -50,11 +50,7 @@ def create():
         description = request.json.get('description')
         sql = "insert into blogs(username, title, description) values (?, ?, ?);"
         values = (username, title, description)
-        try:
-            lock.acquire(True)
-            cursor.execute(sql, (username, title, description))
-        finally:
-            lock.release()
+        cursor.execute(sql, (values))
         conn.commit()
         return ("Submitted successfully!")
     return "Sorry, submission failed."
@@ -63,7 +59,7 @@ def create():
 def detail():
     if request.method == 'POST':
         id = request.json.get('id')
-        sql = "select title, description from blogs where id = ?"
+        sql = "select title, username, description from blogs where id = ?"
         cursor.execute(sql, id)
         res = cursor.fetchone()
         print(res)
