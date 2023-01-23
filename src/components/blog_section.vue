@@ -4,7 +4,7 @@
         <nav>
             <ul>
                 <li v-for="blog in blogs_list" :key="blog.id">
-                    <router-link :to="{path:'/blog_description', query:{id:blog.id}}"><h3>{{ blog.title }}</h3></router-link>
+                    <router-link class="blog_links" :to="{path:'/blog_description', query:{id:blog.id}}"><h3 class="blog_list">{{ blog.title }}</h3></router-link>
                     <p v-if="blog.description.length<50">{{ blog.description }} </p>
                     <p v-else>{{ blog.description.substring(0,50)+"..." }}</p>
                 </li>
@@ -32,6 +32,7 @@ export default {
                 .then((res) => {
                     if (res) {
                         this.blogs_list = res.data
+                        this.$forceUpdate();
                     }
                     else return
                 })

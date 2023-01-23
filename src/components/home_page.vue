@@ -17,9 +17,7 @@
             </div>
             <hr />
         </header>
-        <KeepAlive>
-            <component :is="currentTab" class="tab"></component>
-        </KeepAlive>
+        <component :is="currentTab"></component>
         <!-- popup style design -->
         <section v-if="showPopup" class="popupsection ShowPopUp">
             <div class="insidepopup">
@@ -50,6 +48,7 @@ export default {
     },
     data() {
         return {
+            componentKey: 0,
             blogs_list: [],
             currentTab: 'blog_section',
             tabs: ['blog_section', 'new_blog'],

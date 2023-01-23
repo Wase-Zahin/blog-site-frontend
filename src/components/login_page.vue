@@ -1,6 +1,6 @@
 <template>
    <div class="logins">
-    <form class="login-box" @submit="onSubmit">
+    <form ref="loginFields" class="login-box" @submit="onSubmit">
         <img class="login-icon" src="../components/img/6681204.png"/>
         <h1>User Login</h1>
         <input 
@@ -11,6 +11,7 @@
 
         <input
         v-model="password" 
+        type="password"
         id="password" 
         placeholder="Password" 
         name="password" required/>
@@ -41,6 +42,7 @@ export default {
             }
             axios.post('http://127.0.0.1:8000/login', params)
             .then(function (res) {
+                if (res.data.status == 'login_no') alert('Login Credentials Incorrect')
                 if (res.data.status == 'login_yes') {
                     let userId = res.data.id;
                     window.localStorage.setItem('login_status', res.data.status);

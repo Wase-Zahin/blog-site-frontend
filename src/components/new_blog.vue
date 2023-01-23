@@ -1,5 +1,6 @@
 <template>
-    <form class="newBlog" @submit="onSubmit">
+    <form ref="formFields" class="newBlog" @submit="onSubmit">
+        <h3 class="create_blog_header">Create a new Blog!</h3>
         <input 
         v-model="username"
         placeholder="Username" 
@@ -32,21 +33,25 @@ export default {
         };
     },
     methods: {
-        onSubmit() {
+        onSubmit(e) {
+            this.$refs.formFields.reset();
+            e.preventDefault();
             let params = {
                 username: this.username,
                 title: this.title,
                 description: this.description
             }
+            console.log(params)
+
             axios.post('http://127.0.0.1:8000/create', params)
-                .then(function (res) {
+                .then((res) => {
                     console.log(params)
                     console.log(res.data);
                     if (res.data == "Submitted successfully") {
                         console.log('NICE')
                     }
                 })
-                .catch(function (err) {
+                .catch((err) => {
                     console.log(err);
                 });
         },

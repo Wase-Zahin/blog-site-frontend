@@ -50,7 +50,7 @@ def create():
         description = request.json.get('description')
         sql = "insert into blogs(username, title, description) values (?, ?, ?);"
         values = (username, title, description)
-        cursor.execute(sql, (values))
+        cursor.execute(sql, values)
         conn.commit()
         return ("Submitted successfully!")
     return "Sorry, submission failed."
