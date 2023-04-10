@@ -18,6 +18,7 @@ lock = Lock()
 app = Flask(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
+print(app)
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
