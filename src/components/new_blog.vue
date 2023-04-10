@@ -43,7 +43,7 @@ export default {
             }
             console.log(params)
 
-            axios.post('http://127.0.0.1:8000/create', params)
+            axios.post('https://full-stack.wase-zahin.repl.co/create', params)
                 .then((res) => {
                     console.log(params)
                     console.log(res.data);

@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         onMount() {
-            axios.post('http://127.0.0.1:8000/home')
+            axios.post('https://full-stack.wase-zahin.repl.co/home')
                 .then((res) => {
                     if (res) {
                         this.blogs_list = res.data

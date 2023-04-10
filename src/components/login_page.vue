@@ -40,7 +40,7 @@ export default {
                 username: this.username,
                 password: this.password
             }
-            axios.post('http://127.0.0.1:8000/login', params)
+            axios.post('https://full-stack.wase-zahin.repl.co/login', params)
             .then(function (res) {
                 if (res.data.status == 'login_no') alert('Login Credentials Incorrect')
                 if (res.data.status == 'login_yes') {
