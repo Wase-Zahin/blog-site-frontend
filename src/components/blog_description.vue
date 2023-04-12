@@ -36,7 +36,7 @@ export default {
             let params = {
                 id: this.route.query.id
             }
-            axios.post('https://full-stack.wase-zahin.repl.co/description', params)
+            axios.post('https://blog-site-backend.wase-zahin.repl.co/description', params)
             .then((res) => {
                 console.log(res.data)
                 this.description = res.data.description

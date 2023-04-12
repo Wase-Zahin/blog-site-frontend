@@ -43,7 +43,7 @@ export default {
             }
             console.log(params)
 
-            axios.post('https://full-stack.wase-zahin.repl.co/create', params)
+            axios.post('https://blog-site-backend.wase-zahin.repl.co/create', params)
                 .then((res) => {
                     console.log(params)
                     console.log(res.data);
