@@ -47,9 +47,6 @@ export default {
                 .then((res) => {
                     console.log(params)
                     console.log(res.data);
-                    if (res.data == "Submitted successfully") {
-                        console.log('NICE')
-                    }
                 })
                 .catch((err) => {
                     console.log(err);
