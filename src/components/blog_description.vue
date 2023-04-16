@@ -28,30 +28,30 @@ export default {
         }
     },
     methods() {
-        
+
     },
     mounted() {
         console.log(this.route.query.id);
-        if(window.localStorage.getItem('login_status') == 'login_yes') {
-            let params = {
-                id: this.route.query.id
-            }
-            axios.get('https://blog-site-backend.wase-zahin.repl.co/description', params)
+        // if(window.localStorage.getItem('login_status') == 'login_yes') {
+        let params = {
+            id: this.route.query.id
+        }
+        axios.get('https://blog-site-backend.wase-zahin.repl.co/description', params)
             .then((res) => {
                 console.log(res.data)
                 this.description = res.data.description
                 this.title = res.data.title
                 this.username = res.data.username
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log(err);
             })
-        }
-        else {
-            router.push({
-                name: 'login_page'
-            })
-        }
+        // }
+        // else {
+        //     router.push({
+        //         name: 'login_page'
+        //     })
+        // }
     }
 }
 </script>
