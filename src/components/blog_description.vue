@@ -31,14 +31,13 @@ export default {
 
     },
     mounted() {
-        console.log(this.route.query.id);
         // if(window.localStorage.getItem('login_status') == 'login_yes') {
         let params = {
             id: this.route.query.id
         }
-        axios.get('https://blog-site-backend.wase-zahin.repl.co/description', params)
+        axios.get(`https://blog-site-backend.wase-zahin.repl.co/description?id=${this.route.query.id}`)
             .then((res) => {
-                console.log(res.data)
+                console.log(res)
                 this.description = res.data.description
                 this.title = res.data.title
                 this.username = res.data.username
