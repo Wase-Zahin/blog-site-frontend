@@ -31,7 +31,7 @@ export default {
                 username: this.username,
                 password: this.password
             }
-            axios.post('https://blog-site-backend.wase-zahin.repl.co/login', params, { withCredentials: true, credentials: 'include' })
+            axios.post('https://blog-site-backend.wase-zahin.repl.co/login', params, { credentials: 'include' })
                 .then(function (res) {
                     if (res.data.status == 'login_no') {
                         alert('Login Credentials Incorrect');
