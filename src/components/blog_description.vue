@@ -37,7 +37,6 @@ export default {
         // }
         axios.get(`https://blog-site-backend.wase-zahin.repl.co/description?id=${this.route.query.id}`)
             .then((res) => {
-                console.log(res)
                 this.description = res.data.description
                 this.title = res.data.title
                 this.username = res.data.username
