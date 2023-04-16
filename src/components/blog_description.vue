@@ -9,7 +9,7 @@
 
 <script>
 import axios from 'axios';
-import router from '@/router';
+// import router from '@/router';
 import { useRoute, useRouter } from 'vue-router';
 import header_section from './header_section.vue';
 
@@ -32,9 +32,9 @@ export default {
     },
     mounted() {
         // if(window.localStorage.getItem('login_status') == 'login_yes') {
-        let params = {
-            id: this.route.query.id
-        }
+        // let params = {
+        //     id: this.route.query.id
+        // }
         axios.get(`https://blog-site-backend.wase-zahin.repl.co/description?id=${this.route.query.id}`)
             .then((res) => {
                 console.log(res)
